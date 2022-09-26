@@ -1,8 +1,6 @@
 /* TO-DO:
- *      - Criar repo;
  *      - Lógica limpeza profunda;
  *      - Path p/windows;
- *      - Função print;
  */
 
 
@@ -12,13 +10,13 @@
 
 int main() {
     // SEMANA 0 - BASE ===============================================================================
-    Ciclic_list_node quarto1("Cozinha",&quarto1);
-    Ciclic_list lista(&quarto1);
-    // anchor_node==quarto1
-    Ciclic_list_node quarto2("Banheiro Grande",&quarto2);
-    Ciclic_list_node quarto3("Banheirinho",&quarto3);
-    lista.pushback(quarto2);
-    lista.pushback(quarto3);
+    Ciclic_list_node room1("Cozinha",&room1);
+    Ciclic_list lista(&room1);
+    // anchor_node==room1
+    Ciclic_list_node room2("Banheiro Grande",&room2);
+    Ciclic_list_node room3("Banheirinho",&room3);
+    lista.pushback(room2);
+    lista.pushback(room3);
     /* Teste: lista.print_list();*/
 
     // FAXINEIROS ====================================================================================
@@ -44,29 +42,8 @@ int main() {
     felps = paula->get_next();
     
     // PRINT LISTA ===================================================================================
-    // Criar obj ofstream & abrir arquivo tabela.txt
-    std::ofstream fw("../data/tabela.txt", std::ofstream::out);
-    if(fw.is_open()) {
-        fw << "SEMANA " << 1 << "\n";
-        fw << "  Lucas: " << lucas->get_quarto() << "\n";
-        fw << "  Paula: " << paula->get_quarto() << "\n";
-        fw << "  Felps: " << felps->get_quarto() << "\n";
-        
-        for(int i=2; i<=n_semanas; i++) {
-            // Rotações
-            lucas = lucas->get_next();
-            paula = paula->get_next();
-            felps = felps->get_next();
-
-            fw << "SEMANA " << i << "\n";
-            fw << "  Lucas: " << lucas->get_quarto() << "\n";
-            fw << "  Paula: " << paula->get_quarto() << "\n";
-            fw << "  Felps: " << felps->get_quarto() << "\n";
-        }
-        fw.close();
-    } else {
-        std::cout << "Problema ao abrir arquivo *.txt" << std::endl;
-    }
+    const char data_path[19] = "../data/tabela.txt";
+    printTabela(lucas,paula,felps,n_semanas,data_path);
     
     return 0;
 }

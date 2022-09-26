@@ -1,4 +1,6 @@
 #include "util.h"
+#include <stdio.h>
+#include <iostream>
 
 int anoBissexto(const int ano)
 {
@@ -96,4 +98,31 @@ int inputData(int& ano, int& mes, int& dia, int& n_semanas)
         return 1;
     }
     return 0;
+}
+
+void printTabela(Ciclic_list_node* lucas, Ciclic_list_node* paula, Ciclic_list_node* felps,
+    const int count, const char path[19])
+{
+    std::ofstream filewrite(path, std::ofstream::out);
+    if(filewrite.is_open()) {
+        filewrite << "SEMANA " << 1 << "\n";
+        filewrite << "  Lucas: " << lucas->get_room() << "\n";
+        filewrite << "  Paula: " << paula->get_room() << "\n";
+        filewrite << "  Felps: " << felps->get_room() << "\n";
+        
+        for(int i=2; i<=count; i++) {
+            // Rotações
+            lucas = lucas->get_next();
+            paula = paula->get_next();
+            felps = felps->get_next();
+
+            filewrite << "SEMANA " << i << "\n";
+            filewrite << "  Lucas: " << lucas->get_room() << "\n";
+            filewrite << "  Paula: " << paula->get_room() << "\n";
+            filewrite << "  Felps: " << felps->get_room() << "\n";
+        }
+        filewrite.close();
+    } else {
+        std::cout << "Problema ao abrir arquivo *.txt" << std::endl;
+    }
 }

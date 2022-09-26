@@ -4,19 +4,19 @@
 
 Ciclic_list_node::Ciclic_list_node()
 {
-    quarto = "none";
+    room = "none";
     next = this;
 }
 
-Ciclic_list_node::Ciclic_list_node(const std::string quarto_val, Ciclic_list_node* next_val)
+Ciclic_list_node::Ciclic_list_node(const std::string room_val, Ciclic_list_node* next_val)
 {
-    quarto = quarto_val;
+    room = room_val;
     next = next_val;
 }
 
-void Ciclic_list_node::set_quarto(const std::string quarto_val)
+void Ciclic_list_node::set_room(const std::string room_val)
 {
-    quarto = quarto_val;
+    room = room_val;
 }
 
 void Ciclic_list_node::set_next(Ciclic_list_node* next_val)
@@ -24,9 +24,9 @@ void Ciclic_list_node::set_next(Ciclic_list_node* next_val)
     next = next_val;
 }
 
-std::string Ciclic_list_node::get_quarto()
+std::string Ciclic_list_node::get_room()
 {
-    return quarto;
+    return room;
 }
 
 Ciclic_list_node* Ciclic_list_node::get_next()
@@ -62,7 +62,7 @@ void Ciclic_list::print_list()
     if(temp==NULL)  return;
     int count = 1;
     do {
-        std::cout << "Quarto" << count << " : " << temp->get_quarto() << std::endl;
+        std::cout << "Comodo" << count << " : " << temp->get_room() << std::endl;
         temp = temp->get_next();
         count++;
     } while(temp!=anchor);
